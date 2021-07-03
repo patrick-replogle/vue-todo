@@ -47,10 +47,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+const { mapActions } = createNamespacedHelpers('todosModule');
 import { generateDateStringForTodo } from '../functions';
 
 export default {
+  name: 'Todo',
   props: ['todo'],
   methods: {
     ...mapActions(['toggleCompleted', 'toggleEdit', 'removeTodo']),

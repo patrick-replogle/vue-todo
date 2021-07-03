@@ -6,9 +6,11 @@
 
 <script>
 import Todo from './Todo';
-import { mapState } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+const { mapState } = createNamespacedHelpers('todosModule');
 
 export default {
+  name: 'TodoList',
   components: {
     Todo
   },

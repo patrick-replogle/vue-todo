@@ -31,9 +31,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions, mapGetters } = createNamespacedHelpers(
+  'todosModule'
+);
 
 export default {
+  name: 'Form',
   data() {
     return {
       details: '',
@@ -42,14 +46,16 @@ export default {
   },
   methods: {
     ...mapActions(['updateTodo', 'addTodo', 'clearCompletedTodos']),
+    ...mapGetters(['getTodoToEdit']),
     onSubmit() {
       if (!this.details || !this.date) return;
 
       const todo = { details: this.details, date: this.date };
 
-      if (this.$store.state.isEditing) {
-        todo.id = this.$store.state.todoToEdit.id;
-        todo.completed = this.$store.state.todoToEdit.completed;
+      if (this.$store.state.todosModule.isEditing) {
+        const editingTodo = this.getTodoToEdit();
+        todo.id = editingTodo.id;
+        todo.completed = editingTodo.completed;
         this.updateTodo(todo);
       } else {
         this.addTodo(todo);
@@ -70,8 +76,9 @@ export default {
   watch: {
     isEditing(isEditMode) {
       if (isEditMode) {
-        this.details = this.$store.state.todoToEdit.details;
-        this.date = this.$store.state.todoToEdit.date;
+        const editingtodo = this.getTodoToEdit();
+        this.details = editingtodo.details;
+        this.date = editingtodo.date;
       }
     }
   }
