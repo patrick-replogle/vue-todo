@@ -97,7 +97,7 @@ export default {
   }
 
   .left {
-    width: 90%;
+    width: 80%;
 
     p {
       font-size: 1.6rem;
@@ -138,7 +138,10 @@ export default {
     input {
       height: 22px;
       width: 22px;
-      margin-right: 4%;
+      margin: 0 4%;
+      @media (max-width: 600px) {
+        margin-left: 3%;
+      }
     }
   }
 }

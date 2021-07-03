@@ -25,5 +25,9 @@ export default {
   align-items: center;
   justify-content: center;
   width: 90%;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
 }
 </style>
