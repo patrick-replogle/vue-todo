@@ -127,6 +127,13 @@ form {
         font-size: 1.6rem;
         width: 100%;
       }
+
+      input[type='date'] {
+        display: block;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        min-height: 1.2em;
+      }
     }
   }
 
