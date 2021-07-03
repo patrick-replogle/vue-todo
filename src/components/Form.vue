@@ -124,15 +124,15 @@ form {
         padding: 14px;
         margin: 5px 0;
         border: 1.5px solid gray;
+        height: 50px;
         font-size: 1.6rem;
-        width: 100%;
+        min-width: 100%;
       }
 
       input[type='date'] {
         display: block;
         -webkit-appearance: textfield;
         -moz-appearance: textfield;
-        min-height: 1.2em;
       }
     }
   }
