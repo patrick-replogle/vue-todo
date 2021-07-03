@@ -123,6 +123,7 @@ export default {
       justify-content: flex-start;
       width: 90%;
       padding-bottom: 20px;
+      padding-left: 2%;
     }
 
     .icon {
