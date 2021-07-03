@@ -133,9 +133,6 @@ export default {
       margin: 0 2%;
       width: 3rem;
       height: 3rem;
-      @media (max-width: 600px) {
-        margin: 0 1%;
-      }
     }
 
     input {
