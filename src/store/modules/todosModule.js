@@ -1,5 +1,5 @@
 import { uuid } from 'vue-uuid';
-import { initTodoState, updateLocalStorage } from '../../functions';
+import { initTodoState } from '../../functions';
 
 export default {
   namespaced: true,
@@ -13,23 +13,23 @@ export default {
     }
   },
   actions: {
-    updateTodo({ commit }, todo) {
-      commit('updateTodo', todo);
+    updateTodo({ commit }, payload) {
+      commit('updateTodo', payload);
     },
-    addTodo({ commit }, todo) {
-      commit('addTodo', todo);
+    addTodo({ commit }, payload) {
+      commit('addTodo', payload);
     },
-    removeTodo({ commit }, todo) {
-      commit('removeTodo', todo);
+    removeTodo({ commit }, payload) {
+      commit('removeTodo', payload);
     },
     clearCompletedTodos({ commit }) {
       commit('clearCompletedTodos');
     },
-    toggleEdit({ commit }, todo) {
-      commit('toggleEdit', todo);
+    toggleEdit({ commit }, payload) {
+      commit('toggleEdit', payload);
     },
-    toggleCompleted({ commit }, todo) {
-      commit('toggleCompleted', todo);
+    toggleCompleted({ commit }, payload) {
+      commit('toggleCompleted', payload);
     }
   },
   mutations: {
@@ -42,21 +42,17 @@ export default {
       });
       state.isEditing = false;
       state.todoToEdit = {};
-      updateLocalStorage(state.todos);
     },
     addTodo(state, todo) {
       todo.completed = false;
       todo.id = uuid.v4();
       state.todos = [...state.todos, todo];
-      updateLocalStorage(state.todos);
     },
     removeTodo(state, todo) {
       state.todos = state.todos.filter(t => t.id !== todo.id);
-      updateLocalStorage(state.todos);
     },
     clearCompletedTodos(state) {
       state.todos = state.todos.filter(t => !t.completed);
-      updateLocalStorage(state.todos);
     },
     toggleEdit(state, todo) {
       state.isEditing = true;
@@ -69,7 +65,6 @@ export default {
         }
         return t;
       });
-      updateLocalStorage(state.todos);
     }
   }
 };

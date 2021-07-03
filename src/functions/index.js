@@ -21,7 +21,3 @@ export function initTodoState() {
   }
   return [];
 }
-
-export function updateLocalStorage(todos) {
-  window.localStorage.setItem('todos', JSON.stringify(todos));
-}
