@@ -49,21 +49,23 @@ export default {
       if (this.$store.state.isEditing) {
         todo.id = this.$store.state.todoToEdit.id;
         todo.completed = this.$store.state.todoToEdit.completed;
-        this.$store.commit('updateTodo', todo);
+        this.$store.dispatch('updateTodo', todo);
       } else {
-        this.$store.commit('addTodo', todo);
+        this.$store.dispatch('addTodo', todo);
       }
       this.clearForm();
     },
     clearCompletedTodos() {
-      this.$store.commit('clearCompletedTodos');
+      this.$store.dispatch('clearCompletedTodos');
     },
     clearForm() {
       this.details = '';
       this.date = '';
     }
   },
-  computed: mapState(['isEditing']),
+  computed: {
+    ...mapState(['isEditing'])
+  },
   watch: {
     isEditing(isEditMode) {
       if (isEditMode) {

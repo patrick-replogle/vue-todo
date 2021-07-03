@@ -9,8 +9,33 @@ const store = createStore({
     isEditing: false,
     todoToEdit: {}
   },
+  getters: {
+    isEditing(state) {
+      return state.isEditing;
+    }
+  },
+  actions: {
+    updateTodo(context, todo) {
+      context.commit('updateTodo', todo);
+    },
+    addTodo(context, todo) {
+      context.commit('addTodo', todo);
+    },
+    removeTodo(context, todo) {
+      context.commit('removeTodo', todo);
+    },
+    clearCompletedTodos(context) {
+      context.commit('clearCompletedTodos');
+    },
+    toggleEdit(context, todo) {
+      context.commit('toggleEdit', todo);
+    },
+    toggleCompleted(context, todo) {
+      context.commit('toggleCompleted', todo);
+    }
+  },
   mutations: {
-    updateTodo: (state, todo) => {
+    updateTodo(state, todo) {
       state.todos = state.todos.map(t => {
         if (t.id === todo.id) {
           return todo;
@@ -21,17 +46,17 @@ const store = createStore({
       state.todoToEdit = {};
       updateLocalStorage(state.todos);
     },
-    addTodo: (state, todo) => {
+    addTodo(state, todo) {
       todo.completed = false;
       todo.id = uuid.v4();
       state.todos = [...state.todos, todo];
       updateLocalStorage(state.todos);
     },
-    removeTodo: (state, todo) => {
+    removeTodo(state, todo) {
       state.todos = state.todos.filter(t => t.id !== todo.id);
       updateLocalStorage(state.todos);
     },
-    clearCompletedTodos: state => {
+    clearCompletedTodos(state) {
       state.todos = state.todos.filter(t => !t.completed);
       updateLocalStorage(state.todos);
     },
@@ -49,7 +74,6 @@ const store = createStore({
       updateLocalStorage(state.todos);
     }
   },
-  actions: {},
   modules: {}
 });
 

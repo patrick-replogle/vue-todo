@@ -53,13 +53,13 @@ export default {
   props: ['todo'],
   methods: {
     toggleCompleted() {
-      this.$store.commit('toggleCompleted', this.todo);
+      this.$store.dispatch('toggleCompleted', this.todo);
     },
     toggleEdit() {
-      this.$store.commit('toggleEdit', this.todo);
+      this.$store.dispatch('toggleEdit', this.todo);
     },
     deleteTodo() {
-      this.$store.commit('removeTodo', this.todo);
+      this.$store.dispatch('removeTodo', this.todo);
     },
     handleDate() {
       return generateDateStringForTodo(this.todo.date);
