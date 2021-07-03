@@ -17,16 +17,7 @@ const persistTodos = store => {
         );
       } catch (e) {
         console.log(e);
-        throw e;
       }
-    }
-  });
-  store.subscribeAction({
-    before: (action, state) => {
-      console.log('before', action, state);
-    },
-    after: (action, state) => {
-      console.log('after', action, state);
     }
   });
 };
