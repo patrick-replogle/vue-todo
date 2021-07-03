@@ -9,13 +9,14 @@
             type="text"
             placeholder="...add a todo"
             v-model="details"
+            required
           />
         </label>
       </div>
       <div>
         <label
           >Due Date
-          <input id="date" type="date" v-model="date" />
+          <input id="date" type="date" v-model="date" required />
         </label>
       </div>
     </div>
@@ -30,7 +31,6 @@
 </template>
 
 <script>
-import { uuid } from 'vue-uuid';
 import { mapState } from 'vuex';
 
 export default {
@@ -44,17 +44,11 @@ export default {
     onSubmit() {
       if (!this.details || !this.date) return;
 
-      const todo = {
-        details: this.details,
-        date: this.date,
-        id: this.$store.state.isEditing
-          ? this.$store.state.todoToEdit.id
-          : uuid.v4(),
-        completed: this.$store.state.isEditing
-          ? this.$store.state.todoToEdit.completed
-          : false
-      };
+      const todo = { details: this.details, date: this.date };
+
       if (this.$store.state.isEditing) {
+        todo.id = this.$store.state.todoToEdit.id;
+        todo.completed = this.$store.state.todoToEdit.completed;
         this.$store.commit('updateTodo', todo);
       } else {
         this.$store.commit('addTodo', todo);

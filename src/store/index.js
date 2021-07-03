@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import { uuid } from 'vue-uuid';
 
 import { initTodoState, updateLocalStorage } from '../functions';
 
@@ -21,6 +22,8 @@ const store = createStore({
       updateLocalStorage(state.todos);
     },
     addTodo: (state, todo) => {
+      todo.completed = false;
+      todo.id = uuid.v4();
       state.todos = [...state.todos, todo];
       updateLocalStorage(state.todos);
     },
