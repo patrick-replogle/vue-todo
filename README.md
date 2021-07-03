@@ -1,24 +1,15 @@
-# vue-todo-app
+# Todo App
 
-## Project setup
-```
-npm install
-```
+Deployed web app can be found here: https://vue-todolist-app.netlify.app/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Project Overview
 
-### Compiles and minifies for production
-```
-npm run build
-```
+A simple todo list web app to help you keep track of tasks that need to get done. Built with Vue.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Contributor
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+|                                                          [Patrick Replogle](https://github.com/patrick-replogle)                                                          |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars2.githubusercontent.com/u/50844285?s=400&u=7ffa88c4c221bf888b1771fec72530ac156d90c6&v=4" width = "200" />](https://github.com/patrick-replogle) |
+|                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/patrick-replogle)                                       |
+|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/patrick-replogle-409a92193/)                |
