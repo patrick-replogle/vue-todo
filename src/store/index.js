@@ -15,23 +15,23 @@ const store = createStore({
     }
   },
   actions: {
-    updateTodo(context, todo) {
-      context.commit('updateTodo', todo);
+    updateTodo({ commit }, todo) {
+      commit('updateTodo', todo);
     },
-    addTodo(context, todo) {
-      context.commit('addTodo', todo);
+    addTodo({ commit }, todo) {
+      commit('addTodo', todo);
     },
-    removeTodo(context, todo) {
-      context.commit('removeTodo', todo);
+    removeTodo({ commit }, todo) {
+      commit('removeTodo', todo);
     },
-    clearCompletedTodos(context) {
-      context.commit('clearCompletedTodos');
+    clearCompletedTodos({ commit }) {
+      commit('clearCompletedTodos');
     },
-    toggleEdit(context, todo) {
-      context.commit('toggleEdit', todo);
+    toggleEdit({ commit }, todo) {
+      commit('toggleEdit', todo);
     },
-    toggleCompleted(context, todo) {
-      context.commit('toggleCompleted', todo);
+    toggleCompleted({ commit }, todo) {
+      commit('toggleCompleted', todo);
     }
   },
   mutations: {

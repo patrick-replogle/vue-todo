@@ -23,7 +23,7 @@
     <div className="btnContainer">
       <button type="submit">Submit</button>
       <button v-on:click="clearForm" type="button">Cancel</button>
-      <button v-on:click="clearCompletedTodos" type="button">
+      <button v-on:click="deleteCompletedTodos" type="button">
         Clear Completed Todos
       </button>
     </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -41,6 +41,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['updateTodo', 'addTodo', 'clearCompletedTodos']),
     onSubmit() {
       if (!this.details || !this.date) return;
 
@@ -49,14 +50,14 @@ export default {
       if (this.$store.state.isEditing) {
         todo.id = this.$store.state.todoToEdit.id;
         todo.completed = this.$store.state.todoToEdit.completed;
-        this.$store.dispatch('updateTodo', todo);
+        this.updateTodo(todo);
       } else {
-        this.$store.dispatch('addTodo', todo);
+        this.addTodo(todo);
       }
       this.clearForm();
     },
-    clearCompletedTodos() {
-      this.$store.dispatch('clearCompletedTodos');
+    deleteCompletedTodos() {
+      this.clearCompletedTodos();
     },
     clearForm() {
       this.details = '';
